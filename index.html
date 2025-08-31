@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>misobot config generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="ui-lowercase">
+            <div class="title">
+                <h1>misobot config generator</h1>
+            </div>
+            <div class="toolbar ui-lowercase" role="toolbar" aria-label="toolbar">
+                <button id="addStepBtn" class="btn">+ add step</button>
+                <label class="btn file-label" for="importFile">import json</label>
+                <input id="importFile" class="file-input" type="file" accept="application/json" />
+                <button id="downloadBtn" class="btn">download json</button>
+                <button id="copyBtn" class="btn">copy json</button>
+                <button id="clearBtn" class="btn">clear</button>
+            </div>
+        </header>
+
+        <div class="grid">
+            <section class="card">
+                <h2 class="ui-lowercase">config</h2>
+                <div class="config-meta">
+                    <div>
+                        <label>config name</label>
+                        <input type="text" id="configName" placeholder="my config" />
+                    </div>
+                    <div>
+                        <label>target url</label>
+                        <input type="text" id="configUrl" placeholder="https://example.com" />
+                    </div>
+                </div>
+
+                <h2 class="ui-lowercase">steps</h2>
+                <div id="steps" class="steps" aria-live="polite"></div>
+                <div id="emptyState" class="empty" style="display:none">
+                    no steps yet. click <b>+ add step</b> to get started.
+                </div>
+            </section>
+
+            <aside class="card">
+                <h2 class="ui-lowercase">json preview</h2>
+                <pre id="jsonPreview">[]</pre>
+            </aside>
+        </div>
+    </div>
+
+    <!-- modal -->
+    <div class="modal-backdrop" id="modalBackdrop">
+        <div class="modal">
+            <header style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+                <h3 class="ui-lowercase" style="margin:0">custom python code</h3>
+                <button id="closeModal" class="btn">✕</button>
+            </header>
+            <textarea id="customCodeArea" spellcheck="false"
+                placeholder="# python snippet to generate a value"></textarea>
+            <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:12px">
+                <button id="cancelModal" class="btn">cancel</button>
+                <button id="saveModal" class="btn">save</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+:root{
+  --bg:#000;
+  --card:#0f0f0f;
+  --muted:#9a9a9a;
+  --text:#fff;
+  --border:#2a2a2a;
+  --radius:12px;
+  --radius-xl:18px;
+  --shadow:0 10px 30px rgba(0,0,0,.6);
+}
+
+*{box-sizing:border-box}
+html,body{
+  height:100%;
+  margin:0;
+  font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color:var(--text);
+  background:var(--bg);
+}
+
+.container{max-width:1200px;margin:24px auto;padding:18px}
+
+header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-bottom:18px
+}
+.title{display:flex;align-items:center;gap:14px}
+h1{margin:0;font-size:1.45rem}
+
+/* toolbar */
+.toolbar{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  background:var(--card);
+  padding:10px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow)
+}
+.toolbar .btn{
+  appearance:none;
+  border:1px solid var(--border);
+  background:#000;
+  color:var(--text);
+  padding:10px 14px;
+  border-radius:12px;
+  cursor:pointer;
+  font-weight:600;
+  height:40px;
+  display:inline-flex;
+  align-items:center
+}
+.toolbar .btn:active{transform:translateY(1px)}
+.file-label{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:10px 14px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#000;
+  cursor:pointer;
+  height:40px
+}
+
+input[type="file"]{position:absolute;left:-9999px}
+
+/* layout */
+.grid{
+  display:grid;
+  grid-template-columns:2.5fr 1fr;
+  gap:18px;
+  align-items:start
+}
+@media (max-width:980px){.grid{grid-template-columns:1fr}}
+
+.card{
+  background:var(--card);
+  border-radius:var(--radius-xl);
+  padding:18px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow)
+}
+.card h2{margin:0 0 12px;font-size:1.05rem}
+
+/* config meta */
+.config-meta{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-bottom:12px
+}
+@media (max-width:700px){.config-meta{grid-template-columns:1fr}}
+label{display:block;margin-bottom:6px;color:var(--muted);font-size:0.82rem}
+input[type="text"],select,textarea{
+  width:100%;
+  padding:10px 12px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  background:#000;
+  color:var(--text);
+  outline:none
+}
+input[type="text"]::placeholder{color:#606060}
+
+/* steps */
+.steps{display:flex;flex-direction:column;gap:12px;min-height:6px}
+.step{
+  display:grid;
+  grid-template-columns:44px 1fr 100px;
+  gap:12px;
+  align-items:start;
+  padding:12px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  background:#000
+}
+.drag{
+  width:44px;
+  height:44px;
+  border-radius:10px;
+  border:1px dashed #444;
+  display:grid;
+  place-items:center;
+  cursor:grab;
+  color:var(--muted)
+}
+
+.fields{display:grid;grid-template-columns:2fr .8fr .9fr;gap:12px}
+@media (max-width:700px){.fields{grid-template-columns:1fr}.step{grid-template-columns:38px 1fr}}
+
+.step-actions{
+  display:flex;
+  gap:8px;
+  align-items:center;
+  justify-content:flex-end;
+  margin-top:10px
+}
+.step-actions .inp-custom {
+  flex: 1;
+  max-width: 180px;
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #000;
+  color: var(--text);
+}
+.btn-remove{
+  background:#070707;
+  border:1px solid #3b1515;
+  color:#ff6f6f;
+  padding:8px 10px;
+  border-radius:10px
+}
+.btn-custom{
+  background:#070707;
+  border:1px solid #333;
+  color:var(--text);
+  padding:8px 10px;
+  border-radius:10px
+}
+.badge{
+  padding:6px 10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  color:var(--muted)
+}
+
+pre{
+  white-space:pre-wrap;
+  word-break:break-word;
+  background:transparent;
+  border-radius:10px;
+  padding:8px;
+  margin:0;
+  color:#e9e9e9
+}
+
+/* modal */
+.modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.6);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:50
+}
+.modal{
+  width:min(880px,92vw);
+  background:var(--card);
+  border-radius:14px;
+  border:1px solid var(--border);
+  padding:16px
+}
+.modal textarea{
+  width:100%;
+  height:220px;
+  padding:12px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:#000;
+  color:var(--text)
+}
+
+/* empty */
+.empty{
+  border:1px dashed #333;
+  border-radius:12px;
+  padding:12px;
+  text-align:left;
+  color:var(--muted)
+}
+
+.ui-lowercase,header,.toolbar,.card h2,.card h1,label,.file-label,h1,button{ text-transform:lowercase }
+input,textarea,pre,code{ text-transform:none }
+
+.muted{color:var(--muted)}
